@@ -1,0 +1,33 @@
+############## application properties ###############
+spring:
+  application:
+    name: proxyedge-service
+  cloud:
+    config:
+       uri: http://localhost:8888
+############## Log properties ###############
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.woowrale.architecture.proxyedge: DEBUG
+############## Server properties ###############
+server:
+  port: 8086
+  tomcat:
+    basedir: target/tomcat/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8790/eureka
+############## Security properties ###############
+security:
+    user:
+      name: admin
+      password: admin
+      role: USER
+    basic:
+      enabled: false
+##    ignored: /**  
+management:
+  security:
+    enabled: true

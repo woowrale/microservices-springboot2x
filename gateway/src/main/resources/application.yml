@@ -1,0 +1,20 @@
+############## Log properties ###############
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.woowrale.architecture.eurekadiscovery: DEBUG
+############## Server properties ###############
+server:
+  port: 8790
+  tomcat:
+    basedir: target/tomcat/
+############## Cloud properties ###############
+spring:
+  application:
+    name: discovery-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8790/
+    register-with-eureka: false
+    fetch-registry: false
