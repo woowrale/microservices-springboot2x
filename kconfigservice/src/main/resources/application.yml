@@ -1,0 +1,21 @@
+############## Log properties ###############
+logging:
+  level:    
+    org.springframework.security: DEBUG
+    com.woowrale.architecture.configuration: DEBUG
+############## Server properties ###############
+server:
+  port: 8888
+  tomcat:
+    basedir: server/tomcat/
+############## Cloud properties ###############    
+spring:
+  profiles:
+     active: native 
+  cloud:  
+      config:
+        server:
+          native:
+            search-locations: file:///usr/microservices/props/
+          #git:
+          #  uri: https://gitlab.com/woowrale/microservices-properties.git

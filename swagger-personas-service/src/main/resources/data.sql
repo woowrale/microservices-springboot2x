@@ -1,0 +1,1 @@
+INSERT INTO tbl_persona (id, nombre, apellido_paterno, apellido_materno, edad) VALUES ('000000001', 'Jeremias', 'Eres', 'Flaco', 15)
