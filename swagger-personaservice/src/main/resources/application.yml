@@ -1,0 +1,60 @@
+############## application properties ###############
+spring:
+  application:
+    name: personas-service
+  cloud:
+    config: 
+      uri: http://localhost:8888
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates           
+  datasource:
+    url: jdbc:h2:mem:personas;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+############## H2 Settings ###############
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false      
+############## Log properties ###############
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.woowrale.architecture.microservice: DEBUG
+############## Server properties ###############
+server:
+  port: 9980
+  tomcat:
+    basedir: target/tomcat/
+############## Security properties ###############
+security:
+    user:
+      name: admin
+      password: admin
+      role: USER
+    basic:
+      enabled: true
+#    ignored: /**  
+management:
+  security:
+    enabled: true
+############## Cloud properties ###############
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8790/eureka
