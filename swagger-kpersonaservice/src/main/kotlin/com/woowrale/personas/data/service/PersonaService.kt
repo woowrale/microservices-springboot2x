@@ -17,12 +17,13 @@ class PersonaService {
     }
 
    fun deletePersona(id: String) {
-        //repository.delete(id)
+       repository.deleteById(id)
     }
 
     fun update(id: String, persona: Persona) {
-        //val pUpdate = Persona(repository.findOne(id).id, repository.findOne(id).nombre, repository.findOne(id).apellidoPaterno, repository.findOne(id).apellidoMaterno, repository.findOne(id).edad)
-        //repository.save(pUpdate)
+        val pFound = repository.findById(id).get()
+        val pUpdate = Persona(pFound.id, pFound.nombre, pFound.apellidoPaterno, pFound.apellidoMaterno, pFound.edad)
+        repository.save(pUpdate)
     }
 
     fun searchAll(): Personas {
