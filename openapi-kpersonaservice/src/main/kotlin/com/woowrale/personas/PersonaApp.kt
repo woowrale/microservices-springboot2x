@@ -19,12 +19,15 @@ import org.springframework.context.annotation.Bean
 @EnableDiscoveryClient
 @SpringBootApplication
 class PersonaApp{
+
     @Bean
     fun customOpenAPI(@Value("\${springdoc.version}") appVersion: String): OpenAPI {
         return OpenAPI()
                 .components(Components().addSecuritySchemes("basicScheme",
                         SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
-                .info(Info().title("SpringShop API").version(appVersion)
+                .info(Info().title("Petstore API").version(appVersion).description(
+                        "This is a Persona Api Rest.")
+                        .termsOfService("http://swagger.io/terms/")
                         .license(License().name("Apache 2.0").url("http://springdoc.org")))
     }
 }

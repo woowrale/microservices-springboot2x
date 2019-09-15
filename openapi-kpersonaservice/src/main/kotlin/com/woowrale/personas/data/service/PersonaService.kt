@@ -22,28 +22,25 @@ class PersonaService {
 
     fun update(id: String, persona: Persona) {
         val pFound = repository.findById(id).get()
-        val pUpdate = Persona(pFound.id, pFound.nombre, pFound.apellidoPaterno, pFound.apellidoMaterno, pFound.edad)
+        val pUpdate = Persona(pFound.id, persona.nombre, persona.apellidoPaterno, persona.apellidoMaterno, persona.edad)
         repository.save(pUpdate)
     }
 
     fun searchAll(): Personas {
-        val personasList = mutableListOf<Persona>()
+        val personalList = mutableListOf<Persona>()
         val iterator = repository.findAll()
         for (persona in iterator) {
-            personasList.add(persona)
+            personalList.add(persona)
         }
 
-        return Personas(personasList)
+        return Personas(personalList)
     }
 
     fun searchById(id: String): Personas {
-        val personasList = mutableListOf<Persona>()
-        val iterator = repository.findAll()
-        for (persona in iterator) {
-            personasList.add(persona)
-        }
-
-        return Personas(personasList)
+        val personalList = mutableListOf<Persona>()
+        val persona = repository.findById(id).get()
+            personalList.add(persona)
+        return Personas(personalList)
     }
 
 }
