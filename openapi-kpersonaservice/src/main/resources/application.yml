@@ -1,7 +1,7 @@
 ############## application properties ###############
 spring:
   application:
-    name: kpersonaservice
+    name: personas-service
   cloud:
     config:
       uri: http://localhost:8888
@@ -23,14 +23,21 @@ spring:
         show_sql: true
         use_sql_comments: true
         format_sql: true
-  ############## H2 Settings ###############
-  h2:
-    console:
+  security:
+    user:
+      name: admin
+      password: admin
+      role: USER
+    basic:
       enabled: true
-      path: /console
-      settings:
-        trace: false
-        web-allow-others: false
+############## H2 Settings ###############
+h2:
+  console:
+    enabled: true
+    path: /console
+    settings:
+      trace: false
+      web-allow-others: false
 ############## Log properties ###############
 logging:
   level:
@@ -40,8 +47,9 @@ logging:
 server:
   port: 9080
   tomcat:
-    basedir: server/tomcat/
-  contextPath: /
+    basedir: target/tomcat/
+  servlet:
+    contextPath: /
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
@@ -56,18 +64,6 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /personas/swagger-ui.html
-############## Security properties ###############
-security:
-  user:
-    name: admin
-    password: admin
-    role: ADMIN
-  basic:
-    enabled: true
-#    ignored: /**
-management:
-  security:
-    enabled: true
 ############## Cloud properties ###############
 eureka:
   client:

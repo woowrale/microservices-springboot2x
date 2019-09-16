@@ -23,8 +23,15 @@ spring:
         show_sql: true
         use_sql_comments: true
         format_sql: true
+  security:
+   user:
+    name: admin
+    password: admin
+    role: USER
+   basic:
+    enabled: true            
 ############## H2 Settings ###############
-  h2:
+h2:
     console:
       enabled: true
       path: /console
@@ -41,7 +48,8 @@ server:
   port: 9080
   tomcat:
     basedir: target/tomcat/
-  contextPath: /
+  servlet:
+    contextPath: /
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
@@ -55,19 +63,7 @@ springdoc:
     enabled: true
     path: /v3/api-docs
   swagger-ui:
-    path: /swagger-ui.html    
-############## Security properties ###############
-security:
-    user:
-      name: admin
-      password: admin
-      role: USER
-    basic:
-      enabled: true
-#    ignored: /**  
-management:
-  security:
-    enabled: true
+    path: /personas/swagger-ui.html    
 ############## Cloud properties ###############
 eureka:
   client:

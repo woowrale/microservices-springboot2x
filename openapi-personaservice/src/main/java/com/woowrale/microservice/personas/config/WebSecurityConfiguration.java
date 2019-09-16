@@ -19,15 +19,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private AccessDeniedHandler accessDeniedHandler;
 	
 	/** The user. */
-	@Value("${security.user.name}")
+	@Value("${spring.security.user.name}")
 	private String user;
 	
 	/** The password. */
-	@Value("${security.user.password}")
+	@Value("${spring.security.user.password}")
 	private String password;
 	
 	/** The role. */
-	@Value("${security.user.role}")
+	@Value("${spring.security.user.role}")
 	private String role;
 
 	/* (non-Javadoc)

@@ -54,15 +54,15 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     private val accessDeniedHandler: AccessDeniedHandler? = null
 
     /** The user.  */
-    @Value("\${security.user.name}")
+    @Value("\${spring.security.user.name}")
     private val user: String? = null
 
     /** The password.  */
-    @Value("\${security.user.password}")
+    @Value("\${spring.security.user.password}")
     private val password: String? = null
 
     /** The role.  */
-    @Value("\${security.user.role}")
+    @Value("\${spring.security.user.role}")
     private val role: String? = null
 
     /* (non-Javadoc)

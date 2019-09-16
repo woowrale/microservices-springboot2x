@@ -2,12 +2,8 @@ package com.woowrale.microservice.personas.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +14,13 @@ import com.woowrale.microservice.personas.data.service.PersonasService;
 /**
  * The Class PersonasApi.
  */
+/**
+ * @author Carlos
+ *
+ */
 @RefreshScope
 @RestController
-public class PersonasApi {
+public class PersonaApiController implements PersonaApi{
 
 	/** The service. */
 	@Autowired
@@ -31,8 +31,6 @@ public class PersonasApi {
 	 *
 	 * @param persona the persona
 	 */
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-	@RequestMapping(value = "/personas", method = RequestMethod.PUT)
 	public @ResponseBody void insert(@RequestBody Persona persona) {
 		service.insertPersona(persona);
 	}
@@ -42,8 +40,6 @@ public class PersonasApi {
 	 *
 	 * @param id the id
 	 */
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-	@RequestMapping(value = "/personas/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable(value = "id") String id) {
 		service.deletePersona(id);
 	}
@@ -53,8 +49,6 @@ public class PersonasApi {
 	 *
 	 * @return the personas
 	 */
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-	@RequestMapping(value = "/personas", method = RequestMethod.GET)
 	public @ResponseBody Personas searchAll() {
 		Personas personas = service.searchAll();
 		return personas;
@@ -66,8 +60,6 @@ public class PersonasApi {
 	 * @param id the id
 	 * @return the personas
 	 */
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-	@RequestMapping(value = "/personas/{id}", method = RequestMethod.GET)
 	public @ResponseBody Personas searchById(@PathVariable(value = "id") String id) {
 		Personas personas = service.searchById(id);
 		return personas;
@@ -79,8 +71,6 @@ public class PersonasApi {
 	 * @param id the id
 	 * @param persona the persona
 	 */
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-	@RequestMapping(value = "/personas/{id}", method = RequestMethod.POST)
 	public @ResponseBody void read(@PathVariable(value = "id") String id, @RequestBody Persona persona) {
 		service.update(id, persona);
 	}

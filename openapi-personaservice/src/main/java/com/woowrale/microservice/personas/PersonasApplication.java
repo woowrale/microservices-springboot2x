@@ -27,13 +27,13 @@ public class PersonasApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PersonasApplication.class, args);
 	}
-	
+
 	@Bean
 	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
 		return new OpenAPI()
 				.components(new Components().addSecuritySchemes("basicScheme",
 						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
-				.info(new Info().title("SpringShop API").version(appVersion)
+				.info(new Info().title("Personas API").version(appVersion).description("This is a Persona Api Rest.")
 						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
 	}
 }
