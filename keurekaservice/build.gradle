@@ -5,18 +5,16 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.7.RELEASE'
-    }
 }
 
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.2.51'
     id 'com.bmuschko.docker-remote-api' version '4.10.0'
-}
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.1.7.RELEASE'
 
-apply plugin: 'org.springframework.boot'
+}
 
 def javaVersion = '1.8'
 def projectVersion = '0.0.1'
